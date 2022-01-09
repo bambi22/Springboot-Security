@@ -1,10 +1,12 @@
 package com.cos.security1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.security1.model.User;
@@ -25,24 +27,21 @@ public class IndexController {
 		return "user";
 	}
 	
-	@GetMapping("/admin")
-	public String admin() {
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@RequestMapping("/admin")
+	public @ResponseBody String admin() throws Exception {
 		return "admin";
 	}
 	
-	@GetMapping("/manager")
-	public String manager() {
+	@PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+	@RequestMapping("/manager")
+	public @ResponseBody String manager() throws Exception {
 		return "manager";
 	}
 	
 	@GetMapping("/loginForm")
 	public String loginForm() {
 		return "loginForm";
-	}
-	
-	@PostMapping("/login")
-	public String login(User user) {
-		return "login";
 	}
 	
 	@GetMapping("/joinForm")
