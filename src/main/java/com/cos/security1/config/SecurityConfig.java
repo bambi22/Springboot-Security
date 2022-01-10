@@ -13,16 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cos.security1.config.oauth.PrincipalOauth2UserService;
 
-@Configuration
 @EnableWebSecurity // 스프링 시큐리티 필터가 스프링 필터체인에 등록됨.
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true) //시큐어 어노테이션 활성화
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired private PrincipalOauth2UserService principalOauth2UserService;
-	
-	@Bean
-	public BCryptPasswordEncoder encodePw() {
-		return new BCryptPasswordEncoder();
-	}
 	
 	// 1. 코드 받기(인증) 2. 액세스 토큰(권한) 3. 사용자 정보 가져오기 4-1. 정보를 토대로 회원가입 자동 시키거나 4-2. 추가 정보 필요 시 입력 후 회원가입
 	@Override

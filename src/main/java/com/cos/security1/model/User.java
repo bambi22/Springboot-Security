@@ -33,5 +33,18 @@ public class User {
 	private String providerId; // google의 sub  
 	@CreationTimestamp private 
 	Timestamp createDate;
+	
+	@Builder
+	public User(String username, String password, String email, String role, String provider, String providerId,
+			Timestamp createDate) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.role = role;
+		this.provider = provider;
+		this.providerId = providerId;
+		this.createDate = createDate;
+	}
 	 
+	
 }
