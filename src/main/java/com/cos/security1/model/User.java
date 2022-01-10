@@ -28,8 +28,9 @@ public class User {
 	private String username; 
 	private String password; 
 	private String email;
-	private String role; // OAuth를 위해 구성한 추가 필드 2개 private String provider;
-	private String providerId;
+	private String role; 
+	private String provider; // google
+	private String providerId; // google의 sub  
 	@CreationTimestamp private 
 	Timestamp createDate;
 	 

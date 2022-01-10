@@ -25,4 +25,14 @@ spring:
       #use-new-id-generator-mappings: false
     show-sql: true
     
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 113327816848-kq4ci1ujj5g3g31d7f6kvag4e7q6qc7a.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+            - email
+            - profile
  
